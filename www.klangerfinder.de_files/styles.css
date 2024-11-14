@@ -1,0 +1,280 @@
+@font-face {
+    font-family: PPSupplyMono;
+    src: url(PPSupplyMono-Regular.otf);
+}
+
+html {
+    font-family: PPSupplyMono;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+}
+ 
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+header {
+    text-align: left;
+}
+
+
+/* language Einstellung */
+.languageSwitch {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 2rem;
+}
+
+
+
+/* Bild reinfliegender Efekt */
+@keyframes flyInRotate {
+    0% {
+        transform: translate(50%, -50%) scale(0.1) rotate(-790deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Button animation groß und klein werdend */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.6);
+    }
+}
+
+
+.content {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 60vw;
+    transition: opacity 2.6s ease-in-out;
+}
+
+
+.content.show {
+    display: block;
+    animation: flyInRotate 2.1s forwards;
+}
+
+
+
+.teambild-image {
+    position: relative;
+    display: inline-block;
+}
+
+.teambild-image img:hover {
+    cursor: url('lupe.png') 25 25, not-allowed;
+}
+
+
+.face-button {
+    position: absolute;
+    background-color: black;
+    opacity: 0%;
+    border: none;
+    border-radius: 50%;
+    width: 4%;
+    height: 12%;
+}
+
+.face-button:hover {
+    opacity: 0%;
+    cursor: url('lupe.png') 25 25, not-allowed;
+}
+
+
+#Flo {
+    top: 45%;
+    left: 56%;
+}
+
+#Ari {
+    top: 47%;
+    left: 34%;
+}
+
+#Christina {
+    top: 33%;
+    left: 50%;
+}
+
+#Lukas {
+    top: 31%;
+    left: 42%;
+}
+
+#Viney {
+    top: 47%;
+    left: 49%;
+}
+
+#Josef {
+    top: 32%;
+    left: 63%;
+}
+
+#Jonathan {
+    top: 43%;
+    left: 41%;
+}
+
+#Fabio {
+    top: 45%;
+    left: 38%;
+}
+
+#Alec {
+    top: 30%;
+    left: 56%;
+}
+
+#Paul {
+    top: 48%;
+    left: 69%;
+}
+
+
+#Denis {
+    top: 45%;
+    left: 63%;
+}
+
+#John {
+    top: 34%;
+    left: 36%;
+}
+
+
+
+.ke-logo {
+    text-align: center;
+    max-width: 10vw;
+    margin: 0 auto;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:active {
+    color: #ffffff;
+}
+
+.albumDownload {
+    margin: 10px 20px 20px 20px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 2rem;
+}
+
+
+
+
+.popover {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 45vw;
+    background-color: #ffffff9d;
+    padding: 2rem;
+    border-radius: 2rem;
+    color: #000000;
+}
+
+
+
+.goContainer {
+display: flex;
+justify-content: center;
+margin: 30px 0px 10px 0px;
+}
+
+
+
+.goButton {
+    animation: pulse 1.9s infinite;
+    background-color: rgb(65, 104, 33);
+    color: white;
+    border-radius: 2rem;
+    border-style: none;
+    padding: 5px 9px 5px 9px;
+}
+
+
+.goButton:hover {
+    background-color: rgb(58, 148, 65);
+}
+
+.goButton:active {
+    background-color: rgb(79, 178, 87);
+}
+
+
+h2 {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+
+
+
+.welcome-text {
+    display: inline-block;
+    padding: 0px 4px 0px 4px;
+}
+
+.welcome-text p {
+    float: left;
+    margin: 0;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 2 2%;
+}
+
+
+@media (max-aspect-ratio: 1/1) {
+
+    .popover {
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    footer {
+        font-size: 0.8rem;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    footer {
+        font-size: 1.2rem;
+    }
+
+}
