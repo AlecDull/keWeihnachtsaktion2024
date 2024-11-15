@@ -120,43 +120,71 @@ function hidePopup() {
 
 
 function randomizePositions(buttons) {
+    const minDistance = 10; // Mindestabstand zwischen Buttons in Prozent (relativ zur Container-Größe)
+    const positions = []; // Speichert die gültigen Positionen
+
     buttons.forEach(button => {
-        // Initiale Positionen festlegen, falls noch nicht vorhanden
-        if (!button.dataset.initialTop) {
-            const computedStyle = getComputedStyle(button);
-            button.dataset.initialTop = parseFloat(computedStyle.top); // Startposition oben
-            button.dataset.initialLeft = parseFloat(computedStyle.left); // Startposition links
+        let isValidPosition = false;
+        let newTop, newLeft;
+
+        // Wiederhole, bis eine gültige Position gefunden ist
+        while (!isValidPosition) {
+            // Zufällige neue Position innerhalb des Bereichs
+            newTop = Math.random() * 100; // 0 bis 100%
+            newLeft = Math.random() * 100; // 0 bis 100%
+
+            // Überprüfen, ob die Position mit anderen Buttons kollidiert
+            isValidPosition = positions.every(pos => {
+                const distance = Math.sqrt(
+                    Math.pow(newTop - pos.top, 2) + Math.pow(newLeft - pos.left, 2)
+                );
+                return distance > minDistance; // True, wenn kein anderer Button zu nah ist
+            });
         }
 
-        // Bewegung innerhalb eines kleinen Radius um die Initialposition
-        const initialTop = parseFloat(button.dataset.initialTop);
-        const initialLeft = parseFloat(button.dataset.initialLeft);
+        // Speichere die neue, gültige Position
+        positions.push({ top: newTop, left: newLeft });
 
-        const randomOffsetTop = (Math.random() - 0.5) * 20; // ±10% Bewegung
-        const randomOffsetLeft = (Math.random() - 0.5) * 20; // ±10% Bewegung
-
-        const newTop = Math.max(0, Math.min(100, initialTop + randomOffsetTop));
-        const newLeft = Math.max(0, Math.min(100, initialLeft + randomOffsetLeft));
-
+        // Setze die Position des Buttons
         button.style.top = `${newTop}%`;
         button.style.left = `${newLeft}%`;
     });
 }
 
+
 function animateButtons(buttons) {
+    const minDistance = 13; // Mindestabstand zwischen Buttons
+    const positions = buttons.map(button => ({
+        top: parseFloat(button.style.top) || 50,
+        left: parseFloat(button.style.left) || 50
+    }));
+
     setInterval(() => {
-        buttons.forEach(button => {
-            const currentTop = parseFloat(button.style.top) || 50; // Aktuelle Position, Standard 50%
-            const currentLeft = parseFloat(button.style.left) || 50; // Aktuelle Position, Standard 50%
+        buttons.forEach((button, index) => {
+            let isValidPosition = false;
+            let newTop, newLeft;
 
-            // Zufällige Offsets für Bewegung in alle Richtungen
-            const randomOffsetTop = (Math.random() - 0.5) * 10; // ±5%
-            const randomOffsetLeft = (Math.random() - 0.5) * 10; // ±5%
+            while (!isValidPosition) {
+                // Zufällige Bewegung innerhalb ±5% der aktuellen Position
+                newTop = positions[index].top + (Math.random() - 0.5) * 10;
+                newLeft = positions[index].left + (Math.random() - 0.5) * 10;
 
-            // Neue Position berechnen
-            const newTop = Math.max(0, Math.min(100, currentTop + randomOffsetTop));
-            const newLeft = Math.max(0, Math.min(100, currentLeft + randomOffsetLeft));
+                // Begrenzen auf 0–100%
+                newTop = Math.max(0, Math.min(100, newTop));
+                newLeft = Math.max(0, Math.min(100, newLeft));
 
+                // Kollisionen überprüfen
+                isValidPosition = positions.every((pos, i) => {
+                    if (i === index) return true; // Überspringe sich selbst
+                    const distance = Math.sqrt(
+                        Math.pow(newTop - pos.top, 2) + Math.pow(newLeft - pos.left, 2)
+                    );
+                    return distance > minDistance;
+                });
+            }
+
+            // Aktualisiere die Position
+            positions[index] = { top: newTop, left: newLeft };
             button.style.transition = 'top 2s ease-in-out, left 2s ease-in-out';
             button.style.top = `${newTop}%`;
             button.style.left = `${newLeft}%`;
