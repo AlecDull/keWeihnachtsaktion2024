@@ -72,3 +72,37 @@ function playAudioRiser(audioFilePath) {
     riser.play();
     riser.volume = 0.5;
 }
+
+
+
+
+const teamMembers = {
+    John: { name: "John Vogelmann", role: "Projektleitung und Komposition", image: "./www.klangerfinder.de_files/john.jpg" },
+    Florian: { name: "Prof. Florian Käppler", role: "Geschäftsführer", image: "./www.klangerfinder.de_files/florian.jpg" },
+    Ari: { name: "Ari García", role: "Audiovisual Mediadesigner", image: "./www.klangerfinder.de_files/ari.jpg" },
+    Christina: { name: "Christina Zenk", role: "Research and Design Evaluation", image: "./www.klangerfinder.de_files/christina.jpg" },
+    Lukas: { name: "Lukas Münter", role: "Audio Engineering", image: "./www.klangerfinder.de_files/lukas.jpg" },
+    Viney: { name: "Vincent Neyses", role: "Auszubildender", image: "./www.klangerfinder.de_files/viney.jpg" },
+    Josef: { name: "Josef Häusel", role: "Creative Technologist, AI-Development", image: "./www.klangerfinder.de_files/josef.jpg" },
+    Jonathan: { name: "Jonathan Schulze", role: "Auszubildender", image: "./www.klangerfinder.de_files/jonathan.jpg" },
+    Fabio: { name: "Fabio Espejo", role: "Auszubildender", image: "./www.klangerfinder.de_files/fabio.jpg" },
+    Alec: { name: "Alec Dull", role: "Intern", image: "./www.klangerfinder.de_files/alec.jpg" },
+    Paul: { name: "Paul Göritz", role: "Projektleitung und Sound Design", image: "./www.klangerfinder.de_files/paul.jpg" },
+    Denis: { name: "Denis Weitmann", role: "Innovation and AI Strategist", image: "./www.klangerfinder.de_files/denis.jpg" },
+    Ute: { name: "Ute Schieß", role: "Backoffice", image: "./www.klangerfinder.de_files/ute.jpg" },
+    Leo: { name: "Leo Frick", role: "Lead Composer", image: "./www.klangerfinder.de_files/leo.jpg" }
+};
+
+function showPopup(id) {
+    const member = teamMembers[id];
+    if (member) {
+        document.getElementById("popupName").innerText = member.name;
+        document.getElementById("popupRole").innerText = member.role;
+        document.getElementById("popupImage").src = member.image;
+        document.getElementById("teamPopup").style.display = "block";
+    }
+}
+
+function hidePopup() {
+    document.getElementById("teamPopup").style.display = "none";
+}
