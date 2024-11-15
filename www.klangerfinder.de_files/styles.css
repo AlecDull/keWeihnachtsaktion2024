@@ -27,15 +27,6 @@ header {
 }
 
 
-/* language Einstellung */
-.languageSwitch {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 2rem;
-}
-
-
 
 /* Bild reinfliegender Efekt */
 @keyframes flyInRotate {
@@ -71,6 +62,7 @@ header {
 }
 
 
+
 .content.show {
     display: block;
     animation: flyInRotate 2.1s forwards;
@@ -83,6 +75,10 @@ header {
     display: inline-block;
 }
 
+.teambild-image img {
+    opacity: 0;
+}
+
 .teambild-image img:hover {
     cursor: url('lupe.png') 25 25, not-allowed;
 }
@@ -90,81 +86,153 @@ header {
 
 .face-button {
     position: absolute;
-    background-color: black;
-    opacity: 0%;
+    background-color: rgba(121, 39, 39, 0.8); /* Halbtransparenter Hintergrund */
     border: none;
     border-radius: 50%;
-    width: 4%;
-    height: 12%;
+    width: 11%;
+    height: 20%;
+    display: flex; /* Zentriert den Text */
+    align-items: center; /* Vertikale Zentrierung */
+    justify-content: center; /* Horizontale Zentrierung */
+    font-size: 1.2vw; /* Dynamische Schriftgröße */
+    color: white; /* Textfarbe */
+    font-family: PPSupplyMono, sans-serif; /* Einheitliche Schriftart */
+    font-weight: bold; /* Dicke Schrift */
+    z-index: 10; /* Buttons über allen anderen Elementen */
+    transition: top 2s ease-in-out, left 2s ease-in-out; /* Sanfte Bewegung */
 }
 
 .face-button:hover {
-    opacity: 0%;
+    background-color: rgba(159, 38, 38, 0.8);
     cursor: url('lupe.png') 25 25, not-allowed;
 }
 
 
-#Florian {
-    top: 45%;
-    left: 56%;
+#eins {
+    top: 25%;
+    left: 96%;
 }
 
-#Ari {
-    top: 47%;
-    left: 34%;
+#zwei {
+    top: 17%;
+    left: 14%;
 }
 
-#Christina {
-    top: 33%;
+#drei {
+    top: 83%;
     left: 50%;
 }
 
-#Lukas {
-    top: 31%;
-    left: 42%;
+#vier {
+    top: 11%;
+    left: 5%;
 }
 
-#Viney {
+#fünf {
     top: 47%;
     left: 49%;
 }
 
-#Josef {
+#sechs {
     top: 32%;
-    left: 63%;
+    left: 13%;
 }
 
-#Jonathan {
+#sieben {
     top: 43%;
     left: 41%;
 }
 
-#Fabio {
+#acht {
     top: 45%;
     left: 38%;
 }
 
 
-#Paul {
+#neun {
     top: 48%;
     left: 69%;
 }
 
 
-#Denis {
+#zehn {
     top: 45%;
     left: 63%;
 }
 
-#John {
+#elf {
     top: 34%;
     left: 36%;
 }
 
 
-#Leo {
+#zwölf {
     top: 30%;
     left: 56%;
+}
+
+#dreizehn {
+    top: 45%;
+    left: 63%;
+}
+
+#vierzehn {
+    top: 34%;
+    left: 36%;
+}
+
+
+#fünfzehn {
+    top: 70%;
+    left: 26%;
+}
+
+#sechtzehn {
+    top: 30%;
+    left: 56%;
+}
+
+#siebzehn {
+    top: 45%;
+    left: 73%;
+}
+
+#achtzehn {
+    top: 94%;
+    left: 36%;
+}
+
+
+#neunzehn {
+    top: 30%;
+    left: 56%;
+}
+
+#zwanzig {
+    top: 45%;
+    left: 63%;
+}
+
+#einundzwanzig {
+    top: 34%;
+    left: 36%;
+}
+
+
+#zweiundzwanzig {
+    top: 30%;
+    left: 56%;
+}
+
+#dreiundzwanzig {
+    top: 34%;
+    left: 36%;
+}
+
+
+#vierundzwanzig {
+    top: 80%;
+    left: 86%;
 }
 
 
@@ -195,21 +263,27 @@ footer {
 }
 
 
-.team-popup {
-    position: fixed;
-    bottom: 20px;
-    left: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    display: none;
-    z-index: 1000;
-    width: 280px;
-    font-family: Arial, sans-serif;
+#teamPopup {
+    display: none; /* Popup ist standardmäßig unsichtbar */
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 30vw;
+    background-color: #ffffff9d;
+    padding: 2rem;
+    border-radius: 2rem;
+    color: #000000;
+    z-index: 20; /* Überlagert andere Inhalte */
 }
 
-.team-popup img {
+/* .doorCloseButton {
+    background-color: transparent;
+    border: none;
+    width: 3rem;
+} */
+
+#popupImage {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -219,6 +293,16 @@ footer {
 
 .team-popup h3, .team-popup p {
     margin: 0;
+}
+
+.ClosePopUpButton {
+    position: absolute;
+    right: 0.5rem;
+    top: 0rem;
+    background-color: transparent;
+    border-radius: 100px;
+    border-style: none;
+    width: 4rem;
 }
 
 
@@ -268,7 +352,6 @@ h2 {
     font-size: 1.6rem;
     text-align: center;
 }
-
 
 
 
